@@ -19,5 +19,19 @@ def makeSequence (dataType) :
     # Add the sequence to the job:
     algSeq += muonSequenceMedium
 
+    # Include, and then set up the pileup analysis sequence:
+    from AsgAnalysisAlgorithms.PileupAnalysisSequence import \
+        makePileupAnalysisSequence
+    lumicalcfiles = []
+    prwfiles = []
+    pileupSequence = makePileupAnalysisSequence( dataType,
+                                                 userPileupConfigs=prwfiles,
+                                                 userLumicalcFiles=lumicalcfiles,
+                                               )
+    pileupSequence.configure( inputName = 'EventInfo', outputName = 'EventInfo_%SYS%' )
+
+    # Add the pileup sequence to the job:
+    algSeq += pileupSequence
+
 
     return algSeq

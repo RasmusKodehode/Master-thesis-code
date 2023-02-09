@@ -1,0 +1,5 @@
+In this folder you would compile the package every time you make changes, 
+calling cmake to look for any new packages you added, and make to compile everything.
+Then you would head to the run folder and run the project using Athena, 
+which would originate from the jobOptions file, communicating with the rest of the algorithm 
+to loop through a sample and retrieve the data we want
